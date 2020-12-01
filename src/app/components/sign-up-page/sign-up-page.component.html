@@ -1,0 +1,42 @@
+<div class="page">
+
+  <app-header [subtitle]="CONSTANTS.SIGN_UP_MSG"
+              [uranus]="false">
+  </app-header>
+
+  <!-- Username and Password form -->
+  <app-form [formGroup]="signUpForm"
+            [getFieldError]="getFieldError"
+            [showFieldError]="showFieldError"
+            (finalFunction)="doSignUp()">
+  </app-form>
+
+  <!-- Buttons and Loading -->
+  <div class="bottom-buttons"
+       *ngIf="showButtons"
+       [@fadeInAnimation]="'in'"
+       (@fadeInAnimation.done)="(isDoingSignUp ? showLoading = true : null)">
+    <button mat-flat-button
+            color="primary"
+            type="button"
+            [disabled]="!signUpForm.valid"
+            (click)="doSignUp()">
+      {{ CONSTANTS.SIGN_UP }}
+    </button>
+    <button mat-stroked-button
+            color="primary"
+            type="button"
+            (click)="goToLogin()">
+      {{ CONSTANTS.CANCEL }}
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="bottom-loading"
+       *ngIf="showLoading"
+       [@fadeInAnimation]="'in'">
+    <mat-progress-spinner mode="indeterminate"
+                          diameter="32">
+    </mat-progress-spinner>
+  </div>
+</div>

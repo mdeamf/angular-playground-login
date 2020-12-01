@@ -1,0 +1,50 @@
+<form [formGroup]="formGroup"
+      class="form">
+  <mat-form-field>
+    <mat-label>{{ CONSTANTS.FORM_FIELD_USERNAME }}</mat-label>
+    <input #username
+           matInput
+           autocomplete="off"
+           type="text"
+           formControlName="username"
+           required
+           (keyup.enter)="password.focus()">
+    <button mat-button
+            mat-icon-button
+            matSuffix
+            aria-label="Limpar"
+            type="button"
+            tabindex="-1"
+            (click)="formGroup.controls.username.setValue('')"
+            *ngIf="username.value">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="tryShowFieldError('username')">
+      {{ tryGetFieldError('username') }}
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>{{ CONSTANTS.FORM_FIELD_PASSWORD }}</mat-label>
+    <input #password
+           matInput
+           autocomplete="off"
+           formControlName="password"
+           required
+           (keyup.enter)="password.blur(); ( tryShowFieldError('password') ? null : tryFinalFunction())"
+           [type]="!showPassword ? 'password' : 'text'">
+    <button mat-button
+            mat-icon-button
+            matSuffix
+            aria-label="Exibir"
+            type="button"
+            tabindex="-1"
+            (click)="showPassword = !showPassword"
+            *ngIf="password">
+      <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+    </button>
+    <mat-error *ngIf="tryShowFieldError('password')">
+      {{ tryGetFieldError('password') }}
+    </mat-error>
+  </mat-form-field>
+</form>

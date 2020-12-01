@@ -1,0 +1,24 @@
+.header {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+  margin: 16px auto;
+}
+
+.header-uranus {
+  background-image: url('../../../assets/uranus.svg');  
+}
+
+.header-saturn {
+  background-image: url('../../../assets/saturn.svg');  
+}
+
+.subtitle {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  padding: 16px 0;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
